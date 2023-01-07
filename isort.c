@@ -23,7 +23,7 @@ int main() {
     return 0;
 }
 
-void shift_element(int* arr, int i) {
+void shift_element(int* arr, int i) {//shifts the elements of the array to the right
     for (int item = i; item > 0; --item)
         *(arr + item) = *(arr + item - 1);
 }
