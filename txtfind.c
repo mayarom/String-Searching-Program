@@ -1,4 +1,5 @@
 
+#include <stdio.h> 
 
 /* Max characters per line. */
 #define LINE 256
@@ -6,7 +7,7 @@
 /* Max characters per word. */
 #define WORD 30
 
-int get_line(char s[]);
+int get_line(char s[]); //
 
 int getword(char w[]);
 
