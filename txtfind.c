@@ -26,54 +26,45 @@ void print_lines(char *str); // gets a string and print all the lines that conta
 void print_similar_words(char *str); // gets a string and print all the words
 // that are similar to the string by similar function
 
-/* Max characters per line. */
-#define LINE 256
-
-/* Max characters per word. */
-#define WORD 30
-
-int get_line(char s[]);
-
-int getword(char w[]);
-
-int substring(char *str1, char *str2);
-
-int similar(char *s, char *t, int n);
-
-void print_lines(char *str);
-
-void print_similar_words(char *str);
-
 int main()
 {
-    while (1)
-    {
-        printf("Enter a choice (a or b): ");
-        c = getchar();
+    char choice; // char to get the choice from the user
+    char c;
+    char word[WORD];                     // char to get the word from the user
+    scanf("%s %c%c", word, &choice, &c); // get the word and the choice from the user
 
-        switch (c)
-        {
-        case 'a':
-            print_line();
-            break;
-        case 'b':
-            similar_word();
-            break;
-        default:
-            printf("Invalid char, try again.\n");
-            break;
-        }
+    switch (choice)
+    {
+    case 'a':
+        print_lines(word);
+        break;
+    case 'b':
+        print_similar_word(word);
+        break;
+    default: // if the user enter a char that is not a or b , scan again
+        printf("Invalid choice, please try again");
+        break;
     }
+    // while (1)        // loop for the menu
+    // {
+    //     scanf("%s %c%c", word, &choice, &c); // get the word and the choice from the user
+
+    //     switch (choice)
+    //     {
+    //     case 'a':
+    //         print_lines(word);
+    //         break;
+    //     case 'b':
+    //         print_similar_word(word);
+    //         break;
+    //     default: // if the user enter a char that is not a or b , scan again
+    //         printf("Invalid choice, please try again");
+    //         break;
+    //     }
+    // }
 
     return 0;
 }
-
-// int main (int argc, char *argv[]){
-//     char buffer[WORD];
-//     fgets(buffer, BUFFERSIZE , stdin);
-//     printf("Read: %s", buffer);
-//     return 0;
-// }
 
 /**
  * Reads a line of input from the standard input (keyboard) and saves it in the
@@ -141,12 +132,12 @@ int substring(char *str1, char *str2)
     {
         for (pointer2 = 0; str2[pointer2] != '\0'; pointer2++) // go over str2
         {
-            if (str1[i + pointer2] != str2[pointer2]) // if the chars are not equal -break and ret
+            if (str1[pointer1 + pointer2] != str2[pointer2]) // if the chars are not equal -break and ret
             {
                 break;
             }
         }
-        if (str2[j] == '\0')
+        if (str2[pointer2] == '\0')
         {
             return 1; // if we got here, str2 is a substring of str1
         }
@@ -215,7 +206,7 @@ void print_similar_words(char *str)
 
         while (myword != NULL)
         {
-            if (similar(mywork, str, 1)) // check if the word is similar to str using "similar function"
+            if (similar(myword, str, 1)) // check if the word is similar to str using "similar function"
             {
                 printf("%s\n", myword);
             }
