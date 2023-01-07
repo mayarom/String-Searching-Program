@@ -11,7 +11,7 @@ int main()
     int arr[ARR_SIZE] = {0};
 
     for (int i = 0; i < ARR_SIZE; ++i)
-        scanf(" %d", (*(arr + i)));
+        scanf(" %d", (arr + i));
 
     insertion_sort(arr, ARR_SIZE);
 
