@@ -30,7 +30,7 @@ int main()
 {
     char choice; // char to get the choice from the user
     char c;
-    char word[WORD];                     // char to get the word from the user
+    char word[MAX_WORD_LENGTH];          // char to get the word from the user
     scanf("%s %c%c", word, &choice, &c); // get the word and the choice from the user
 
     switch (choice)
@@ -39,7 +39,7 @@ int main()
         print_lines(word);
         break;
     case 'b':
-        print_similar_word(word);
+        print_similar_words(word);
         break;
     default: // if the user enter a char that is not a or b , scan again
         printf("Invalid choice, please try again");
