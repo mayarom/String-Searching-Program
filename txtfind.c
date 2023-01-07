@@ -1,9 +1,10 @@
 
+// Description: This program gets a string and print all the lines that contain the string
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-
 
 /* Max characters per line. */
 #define MAX_LINE_LENGTH 256
@@ -25,9 +26,54 @@ void print_lines(char *str); // gets a string and print all the lines that conta
 void print_similar_words(char *str); // gets a string and print all the words
 // that are similar to the string by similar function
 
+/* Max characters per line. */
+#define LINE 256
+
+/* Max characters per word. */
+#define WORD 30
+
+int get_line(char s[]);
+
+int getword(char w[]);
+
+int substring(char *str1, char *str2);
+
+int similar(char *s, char *t, int n);
+
+void print_lines(char *str);
+
+void print_similar_words(char *str);
+
 int main()
 {
+    while (1)
+    {
+        printf("Enter a choice (a or b): ");
+        c = getchar();
+
+        switch (c)
+        {
+        case 'a':
+            print_line();
+            break;
+        case 'b':
+            similar_word();
+            break;
+        default:
+            printf("Invalid char, try again.\n");
+            break;
+        }
+    }
+
+    return 0;
 }
+
+// int main (int argc, char *argv[]){
+//     char buffer[WORD];
+//     fgets(buffer, BUFFERSIZE , stdin);
+//     printf("Read: %s", buffer);
+//     return 0;
+// }
 
 /**
  * Reads a line of input from the standard input (keyboard) and saves it in the
@@ -159,15 +205,15 @@ void print_lines(char *str)
  * @param str The string to search for in the input words.
  */
 
-void print_similar_words(char *str) 
+void print_similar_words(char *str)
 {
-    char myline[MAX_LINE_LENGTH]; 
+    char myline[MAX_LINE_LENGTH];
 
-    while (fgets(myline, MAX_LINE_LENGTH, stdin) != NULL) 
+    while (fgets(myline, MAX_LINE_LENGTH, stdin) != NULL)
     {
         char *myword = strtok(myline, " \t\n"); // split the line to words
 
-        while (myword != NULL) 
+        while (myword != NULL)
         {
             if (similar(mywork, str, 1)) // check if the word is similar to str using "similar function"
             {
